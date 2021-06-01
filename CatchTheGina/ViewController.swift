@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     var score = 0
     var counter = 0
     var timer = Timer()
+    var dinoArray = [UIImageView]()
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -65,6 +66,17 @@ class ViewController: UIViewController {
         counter = 10
         timeLabel.text = String(counter) //"\(counter)"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown) , userInfo: nil, repeats: true)
+        
+        dinoArray = [dino1, dino2, dino3, dino4, dino5, dino6, dino7, dino8, dino9]
+        hideDino()
+        
+    }
+    
+    func hideDino() {
+        for dino in dinoArray {
+            dino.isHidden = true
+        }
+        arc4random_uniform(UInt32(dinoArray.count))
     }
     
     @objc func countDown() {
