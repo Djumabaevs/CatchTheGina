@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     
     var score = 0
+    var counter = 0
+    var timer = Timer()
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -38,6 +40,7 @@ class ViewController: UIViewController {
         dino6.isUserInteractionEnabled = true
         dino7.isUserInteractionEnabled = true
         dino8.isUserInteractionEnabled = true
+        dino9.isUserInteractionEnabled = true
         
         let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         let recognizer2 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
@@ -58,6 +61,9 @@ class ViewController: UIViewController {
         dino7.addGestureRecognizer(recognizer7)
         dino8.addGestureRecognizer(recognizer8)
         dino9.addGestureRecognizer(recognizer9)
+        
+        counter = 10
+        timeLabel.text = "\(counter)"
     }
     
     @objc func increaseScore() {
