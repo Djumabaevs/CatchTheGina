@@ -63,7 +63,23 @@ class ViewController: UIViewController {
         dino9.addGestureRecognizer(recognizer9)
         
         counter = 10
-        timeLabel.text = "\(counter)"
+        timeLabel.text = String(counter) //"\(counter)"
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown) , userInfo: nil, repeats: true)
+    }
+    
+    @objc func countDown() {
+        counter -= 1
+        timeLabel.text = String(counter)
+        
+        if counter == 0 {
+            timer.invalidate()
+            
+            let alert = UIAlertController(title: "Time's up", message: "Do you want to play again?", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { UIAlertAction in
+                
+            }
+        }
     }
     
     @objc func increaseScore() {
