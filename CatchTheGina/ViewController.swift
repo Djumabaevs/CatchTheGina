@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     var score = 0
     var counter = 0
     var timer = Timer()
+    var hideTimer = Timer()
     var dinoArray = [UIImageView]()
 
     @IBOutlet weak var timeLabel: UILabel!
@@ -66,17 +67,19 @@ class ViewController: UIViewController {
         counter = 10
         timeLabel.text = String(counter) //"\(counter)"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown) , userInfo: nil, repeats: true)
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(hideDino), userInfo: nil, repeats: true)
         
         dinoArray = [dino1, dino2, dino3, dino4, dino5, dino6, dino7, dino8, dino9]
         hideDino()
         
     }
     
-    func hideDino() {
+    @objc func hideDino() {
         for dino in dinoArray {
             dino.isHidden = true
         }
-        arc4random_uniform(UInt32(dinoArray.count))
+        let random = Int(arc4random_uniform(UInt32(dinoArray.count)))
+        dinoArray[random].isHidden = false
     }
     
     @objc func countDown() {
@@ -85,6 +88,11 @@ class ViewController: UIViewController {
         
         if counter == 0 {
             timer.invalidate()
+            hideTimer.invalidate()
+            
+            for dino in dinoArray {
+                dino.isHidden = true
+            }
             
             let alert = UIAlertController(title: "Time's up", message: "Do you want to play again?", preferredStyle: UIAlertController.Style.alert)
             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
