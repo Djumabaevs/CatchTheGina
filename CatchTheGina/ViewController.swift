@@ -30,6 +30,15 @@ class ViewController: UIViewController {
         
         scoreLabel.text = "Score: \(score)"
         
+        dino1.isUserInteractionEnabled = true
+        dino2.isUserInteractionEnabled = true
+        dino3.isUserInteractionEnabled = true
+        dino4.isUserInteractionEnabled = true
+        dino5.isUserInteractionEnabled = true
+        dino6.isUserInteractionEnabled = true
+        dino7.isUserInteractionEnabled = true
+        dino8.isUserInteractionEnabled = true
+        
         let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         let recognizer2 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         let recognizer3 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
@@ -52,7 +61,8 @@ class ViewController: UIViewController {
     }
     
     @objc func increaseScore() {
-        
+        score += 1
+        scoreLabel.text = "Score: \(score)"
     }
 
 
