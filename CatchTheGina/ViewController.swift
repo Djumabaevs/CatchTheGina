@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var timer = Timer()
     var hideTimer = Timer()
     var dinoArray = [UIImageView]()
+    var highScore = 0
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -94,7 +95,14 @@ class ViewController: UIViewController {
             for dino in dinoArray {
                 dino.isHidden = true
             }
+            //HighScore
+            if self.score > self.highScore {
+                self.highScore = self.score
+                highscoreLabel.text = "Score: \(self.highScore)"
+                UserDefaults.standard.setValue(self.highScore, forKey: "highscore")
+            }
             
+            //Alert
             let alert = UIAlertController(title: "Time's up", message: "Do you want to play again?", preferredStyle: UIAlertController.Style.alert)
             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
             let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { UIAlertAction in
