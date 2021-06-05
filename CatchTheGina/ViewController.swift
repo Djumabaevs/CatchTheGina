@@ -41,7 +41,10 @@ class ViewController: UIViewController {
             highscoreLabel.text = "HighScore: \(highScore)"
         }
         
-        
+        if let newScore = highScoreStored as? Int {
+            highScore = newScore
+            highscoreLabel.text = "HighScore: \(highScore)"
+        }
         
         dino1.isUserInteractionEnabled = true
         dino2.isUserInteractionEnabled = true
