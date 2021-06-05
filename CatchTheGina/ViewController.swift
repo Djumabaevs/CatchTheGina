@@ -104,7 +104,8 @@ class ViewController: UIViewController {
                 self.counter = 10
                 self.timeLabel.text = String(self.counter)
                 
-                
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown) , userInfo: nil, repeats: true)
+                self.hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.hideDino), userInfo: nil, repeats: true)
                 
             }
             
