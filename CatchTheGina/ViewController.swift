@@ -66,6 +66,7 @@ class ViewController: UIViewController {
         
         counter = 10
         timeLabel.text = String(counter) //"\(counter)"
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown) , userInfo: nil, repeats: true)
         hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(hideDino), userInfo: nil, repeats: true)
         
@@ -98,6 +99,13 @@ class ViewController: UIViewController {
             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
             let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { UIAlertAction in
                 // replay function
+                self.score = 0
+                self.scoreLabel.text = "Score: \(self.score)"
+                self.counter = 10
+                self.timeLabel.text = String(self.counter)
+                
+                
+                
             }
             
             alert.addAction(okButton)
