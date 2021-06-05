@@ -35,6 +35,14 @@ class ViewController: UIViewController {
         
         scoreLabel.text = "Score: \(score)"
         
+        let highScoreStored = UserDefaults.standard.object(forKey: "highscore")
+        if highScoreStored == nil {
+            highScore = 0
+            highscoreLabel.text = "HighScore: \(highScore)"
+        }
+        
+        
+        
         dino1.isUserInteractionEnabled = true
         dino2.isUserInteractionEnabled = true
         dino3.isUserInteractionEnabled = true
